@@ -22,7 +22,7 @@ body {
     position: absolute;
     font-size: 23px;
     right: 40px;
-    top: 40px;
+    top: 41px;
 
 }
 
@@ -40,12 +40,15 @@ body {
 }
 
 .cuadro{
-    background-color: #fff;
-    border-radius: 10px;
+    background-color: #2F2E2E;
+    border-radius: 30px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    max-width: 800px;
-    margin: 120px auto;
+    width: 40%;
+    max-width: 798px;
+    position: fixed;
+    top: 100px;
+    height: 40%;
+    margin: 180px auto;
     padding: 20px;
 }
 
@@ -83,12 +86,19 @@ body {
 }
 
 .pregunta p {
+    background-color: #DA6AFF;
+    padding: 10px;
+    border-radius: 19px;
     font-size: 18px;
-    color: #333;
+    font-weight: 500;
+    text-align: center;
+    color: #fff;
     margin-bottom: 20px;
 }
 
 .opciones {
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -98,14 +108,14 @@ body {
     display: flex;
     align-items: center;
     padding: 12px 15px;
-    border-radius: 8px;
+    border-radius: 19px;
     border: 1px solid #ddd;
     cursor: pointer;
     transition: all 0.2s;
 }
 
 .option:hover {
-    background-color: #f9f9f9;
+    background-color: #2509a5;
 }
 
 .option input {
@@ -122,8 +132,11 @@ body {
     background-color: #DA6AFF;
     color: white;
     border: none;
+    position: fixed;
+    bottom: 150px;
+    left: 48%;
     padding: 12px 30px;
-    border-radius: 5px;
+    border-radius: 30px;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
@@ -131,7 +144,7 @@ body {
 }
 
 #siguiente:hover {
-    background-color: #45a049;
+    background-color: #2509a5;
 }
 
 /* Estilos para los radio buttons personalizados */
@@ -151,8 +164,8 @@ input[type="radio"] {
 }
 
 .option input:checked ~ .checkmark {
-    background-color: #4CAF50;
-    border-color: #4CAF50;
+    background-color: #ffffff;
+    border-color: #ffffff;
 }
 
 .checkmark:after {
@@ -169,4 +182,8 @@ input[type="radio"] {
 
 .option input:checked ~ .checkmark:after {
     display: block;
+    border: 2px solid #212121;
+    background-color: #212121;
+    
+    
 }
