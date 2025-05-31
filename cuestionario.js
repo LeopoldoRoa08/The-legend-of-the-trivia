@@ -17,8 +17,52 @@ let respuestas = [
     ["Hideo Kojima","Hidetaka Miyazaki","Masahiro Sakurai","Shigeru Miyamoto"],
 ]
 
-let counter = 1
+let respuestasdeUsario = [];
+
+function guardarRespuesta() {
+    let respuestaSeleccionada = document.querySelector('input[name="answer"]:checked');
+    if (respuestaSeleccionada) {
+        respuestasdeUsario[counter] = respuestaSeleccionada.value;
+    }
+    else {
+        respuestasdeUsario[counter] = null; // Si no se selecciona nada, guardamos null
+    }
+}
+
+if (counter > preguntas.length ) {
+   localStorage.setItem("quizResults", JSON.stringify({
+            nickname: localStorage.getItem("nickname"),
+            answers: respuestasdeUsario,
+            correctAnswers: ["Japón", "OXO", "1994", "FromSoftware", "God of War(2018)", "Nintendo DS", "Minecraft", "Scorpion", "RPG", "Shigeru Miyamoto"], // Agrega aquí todas las respuestas correctas en orden
+            timeSpent: (5 * 60) - timeLeft // Tiempo usado en segundos
+        }));
+        window.location.href = '/Cuestionariofinalizado.html';
+        return;
+    }
+
+
+function mezclarArrays() {
+    let combinadas = preguntas.map((p, i) => ({ pregunta: p, respuestas: respuestas[i] }));
+    for (let i = combinadas.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [combinadas[i], combinadas[j]] = [combinadas[j], combinadas[i]];
+    }
+    combinadas.forEach((item, i) => {
+        preguntas[i] = item.pregunta;
+        respuestas[i] = item.respuestas;
+    });
+}
+mezclarArrays();
+
+
+let counter = 0
 function siguientePregunta(){
+
+    if(counter >= preguntas.length){
+        alert("¡Has completado el cuestionario!");
+        window.location.href = '/Cuestionariofinalizado.html'; // Redirigir a la página de resultados
+        return;
+    }
     document.querySelector("#titulo-pregunta").innerHTML = preguntas[counter];
     let opciones = document.querySelectorAll(".option") // [...]
     for(let i = 0; i < opciones.length; i++){
@@ -60,9 +104,11 @@ document.querySelector(".Logout").addEventListener("click", logout)
             } else {
                 clearInterval(timerInterval);
                 alert("¡Tiempo acabado!");
+                window.location.href = '/Cuestionariofinalizado.html'; // Redirigir a la página de resultados
             }
         }
 
         // Actualizar cada segundo
         let timerInterval = setInterval(updateTimer, 1000);
 
+        

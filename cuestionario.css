@@ -155,3 +155,15 @@ input[type="radio"] {
     text-align: center;
     margin-top: 20px;
 }
+
+.resultados {
+    background-color: #2F2E2E;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 40%;
+    max-width: 798px;
+    height: 3755px;
+    margin: auto;
+    padding: 30px;
+    margin-bottom: 20%;
+}
