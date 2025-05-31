@@ -3,27 +3,23 @@ body {
     background-color: #212121;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
 }
+
 .contenedor_de_arriba {
    background-color: #DA6AFF;
-   position: fixed;
-    top: 0;
-   height: 100px;
-   width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2% 0 2%;
 }
 
 .Logout{
     font-family: 'Roboto', sans-serif;
     color: #fff;
-    position: absolute;
     font-size: 23px;
-    right: 40px;
-    top: 41px;
-
+    cursor: pointer;
+    font-weight: 600;
 }
 
 .Logout:hover {
@@ -31,12 +27,9 @@ body {
 }
 
 .Logo{
-    position: absolute;
-    top: 10px;
-    left: 20px;
     width: 95px;
     height: 95px;
-    
+    cursor: pointer;
 }
 
 .cuadro{
@@ -45,24 +38,16 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 40%;
     max-width: 798px;
-    position: fixed;
-    top: 100px;
     height: 40%;
-    margin: 180px auto;
-    padding: 20px;
+    margin: auto;
+    padding: 30px;
+    margin-bottom: 20%;
 }
 
-
-
-
-
-
 .encabezado {
-    position: fixed;
-    top: 180px;
     width: 100%;
     text-align: center;
-    margin-top: 10px;
+    margin-top: 5%;
 }
 
 .encabezado h1 {
@@ -73,16 +58,10 @@ body {
 
 .tiempo {
     font-size: 32px;
-    font-weight: 600;
+    font-weight: 300;
     color: #fff;
-    position: fixed;
-    left: 930px;
-    top: 230px;
-    margin-top: 5px;
-}
-
-.contenido {
-    padding: 20px;
+    width: 40%;
+    margin: 2% auto 1% auto;
 }
 
 .pregunta p {
@@ -115,7 +94,9 @@ body {
 }
 
 .option:hover {
-    background-color: #2509a5;
+    background-color: #e9a2ff;
+    color: #5c007a;
+    font-weight: bold;
 }
 
 .option input {
@@ -132,9 +113,6 @@ body {
     background-color: #DA6AFF;
     color: white;
     border: none;
-    position: fixed;
-    bottom: 150px;
-    left: 48%;
     padding: 12px 30px;
     border-radius: 30px;
     font-size: 16px;
@@ -144,46 +122,28 @@ body {
 }
 
 #siguiente:hover {
-    background-color: #2509a5;
+    background-color: #9700c9;
 }
 
-/* Estilos para los radio buttons personalizados */
 input[type="radio"] {
-    opacity: 0;
-    position: absolute;
+    transform: scale(1.5);
+    margin: 0 10px 0 0;
 }
 
-.checkmark {
-    position: relative;
-    height: 20px;
-    width: 20px;
-    background-color: #fff;
-    border: 2px solid #ccc;
-    border-radius: 50%;
-    margin-right: 10px;
-}
+@media (width <= 700px) {
+  
+    .cuadro{
+    width: 90%;
+    padding: 10px;
+    }
 
-.option input:checked ~ .checkmark {
-    background-color: #ffffff;
-    border-color: #ffffff;
-}
+    .tiempo {
+        width: 90%;
+        margin: 4% auto 4% auto;
+    }
 
-.checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-    top: 4px;
-    left: 4px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: white;
-}
+    .encabezado {
+        margin-top: 10%;
+    }
 
-.option input:checked ~ .checkmark:after {
-    display: block;
-    border: 2px solid #212121;
-    background-color: #212121;
-    
-    
 }

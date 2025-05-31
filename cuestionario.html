@@ -9,43 +9,36 @@
 </head>
 <body>
     <div class="contenedor_de_arriba">
-            <div class="Logout">Logout</div>
-            <img src="Adobe Express - file.png" alt="Logo" class="Logo">
+        <img src="Adobe Express - file.png" alt="Logo" class="Logo">
+        <div class="Logout">Logout</div>
     </div>
     <div class="encabezado">
-                <h1>Cuestionario</h1>
-   
-            
-    <div class="tiempo">5:00</div>
-            </div>
+        <h1>Cuestionario</h1>
+        <div id ="timer" class="tiempo">5:00</div>
+    </div>
         </div>
 <div class="cuadro">
         <div class="contenido">
             <div class="pregunta">
-                <p>¿Qué país creó juegos de rol influyentes como Final Fantasy y Dragon Quest?</p>
-                
+                <p id="titulo-pregunta">¿Qué país creó juegos de rol influyentes como Final Fantasy y Dragon Quest?</p>
                 <div class="opciones">
                     <label class="option">
                         <input type="radio" name="answer" value="Japón">
-                        <span class="checkmark"></span>
                         Japón
                     </label>
                     
                     <label class="option">
                         <input type="radio" name="answer" value="Estados Unidos">
-                        <span class="checkmark"></span>
                         Estados Unidos
                     </label>
                     
                     <label class="option">
                         <input type="radio" name="answer" value="Venezuela">
-                        <span class="checkmark"></span>
                         Venezuela
                     </label>
                     
                     <label class="option">
                         <input type="radio" name="answer" value="Corea del Sur">
-                        <span class="checkmark"></span>
                         Corea del Sur
                     </label>
                  <div class="boton-siguiente">
@@ -54,4 +47,7 @@
         </div>
     </div>
 </body>
+
+<script src="cuestionario.js" type="text/javascript"></script>
+
 </html>
