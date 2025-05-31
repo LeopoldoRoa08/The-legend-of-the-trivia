@@ -1,114 +1,160 @@
-let preguntas = ["¿Qué país creó juegos de rol influyentes como Final Fantasy y Dragon Quest?", "¿Qué juego es considerado el primer videojuego de la historia?",
-    "¿En qué año salió la PlayStation 1?", '¿Qué estudio desarrolló "Elden Ring"?', '¿Qué juego ganó el premio "Juego del Año" en The Game Awards 2018?',
-    '¿Qué consola de Nintendo presentaba el innovador controlador de "pantalla táctil"?', '¿Cual es el Juego mas vendido de la Historia?',
-    '¿Quien dice la frase “Get over here”', '¿Que genero es Pokemon?', '"Un juego retrasado eventualmente es bueno, un juego malo es malo para siempre" ¿De qué desarrollador vino?'
-]
+// Datos completos del cuestionario
+let preguntas = [
+    "¿Qué país creó juegos de rol influyentes como Final Fantasy y Dragon Quest?", 
+    "¿Qué juego es considerado el primer videojuego de la historia?",
+    "¿En qué año salió la PlayStation 1?", 
+    '¿Qué estudio desarrolló "Elden Ring"?', 
+    '¿Qué juego ganó el premio "Juego del Año" en The Game Awards 2018?',
+    '¿Qué consola de Nintendo presentaba el innovador controlador de "pantalla táctil"?', 
+    '¿Cual es el Juego mas vendido de la Historia?',
+    '¿Quien dice la frase "Get over here"', 
+    '¿Que genero es Pokemon?', 
+    '"Un juego retrasado eventualmente es bueno, un juego malo es malo para siempre" ¿De qué desarrollador vino?'
+];
 
 let respuestas = [
-    ["Japón","Estados Unidos","Venezuela","Corea del Sur"], //RESPUESTAS DE PRIMERA PREGUNTA
-    ["Pong","Super Mario Bros","OXO","Tetris for two"],  //RESPUESTAS DE SEGUNDO PREGUNTA
-    ["1994","1995","1999","2002"],
-    ["Nintendo","FromSoftware","Capcom","Square Enix"],
-    ["Spider-man","Red Dead Redemption 2","Super Smash Bros Ultimate","God of War(2018)"],
-    ["Nintendo Wii","Nintendo 64","Nintendo DS","Nintendo Switch"],
-    ["Tetris","Minecraft","Grand Theft Auto V","Mario Kart 8 Deluxe"],
-    ["Scorpion","Ryu","Terry Bogard","Jin Kazama"],
-    ["Mundo Abierto","Plataformero","RPG","Novela Visual"],
-    ["Hideo Kojima","Hidetaka Miyazaki","Masahiro Sakurai","Shigeru Miyamoto"],
-]
+    ["Japón", "Estados Unidos", "Venezuela", "Corea del Sur"],
+    ["Pong", "Super Mario Bros", "OXO", "Tetris for two"],
+    ["1994", "1995", "1999", "2002"],
+    ["Nintendo", "FromSoftware", "Capcom", "Square Enix"],
+    ["Spider-man", "Red Dead Redemption 2", "Super Smash Bros Ultimate", "God of War(2018)"],
+    ["Nintendo Wii", "Nintendo 64", "Nintendo DS", "Nintendo Switch"],
+    ["Tetris", "Minecraft", "Grand Theft Auto V", "Mario Kart 8 Deluxe"],
+    ["Scorpion", "Ryu", "Terry Bogard", "Jin Kazama"],
+    ["Mundo Abierto", "Plataformero", "RPG", "Novela Visual"],
+    ["Hideo Kojima", "Hidetaka Miyazaki", "Masahiro Sakurai", "Shigeru Miyamoto"]
+];
 
-let respuestasdeUsario = [];
+const respuestasCorrectas = [
+    "Japón", 
+    "OXO", 
+    "1994", 
+    "FromSoftware", 
+    "God of War(2018)", 
+    "Nintendo DS", 
+    "Minecraft", 
+    "Scorpion", 
+    "RPG", 
+    "Shigeru Miyamoto"
+];
 
-function guardarRespuesta() {
-    let respuestaSeleccionada = document.querySelector('input[name="answer"]:checked');
-    if (respuestaSeleccionada) {
-        respuestasdeUsario[counter] = respuestaSeleccionada.value;
-    }
-    else {
-        respuestasdeUsario[counter] = null; // Si no se selecciona nada, guardamos null
-    }
-}
+let respuestasUsuario = [];
+let counter = 0;
+let timeLeft = 5 * 60; // 5 minutos en segundos
 
-if (counter > preguntas.length ) {
-   localStorage.setItem("quizResults", JSON.stringify({
-            nickname: localStorage.getItem("nickname"),
-            answers: respuestasdeUsario,
-            correctAnswers: ["Japón", "OXO", "1994", "FromSoftware", "God of War(2018)", "Nintendo DS", "Minecraft", "Scorpion", "RPG", "Shigeru Miyamoto"], // Agrega aquí todas las respuestas correctas en orden
-            timeSpent: (5 * 60) - timeLeft // Tiempo usado en segundos
-        }));
-        window.location.href = '/Cuestionariofinalizado.html';
-        return;
-    }
-
-
+// Función para mezclar preguntas y respuestas
 function mezclarArrays() {
-    let combinadas = preguntas.map((p, i) => ({ pregunta: p, respuestas: respuestas[i] }));
+    // Combinar preguntas con sus respuestas y respuestas correctas
+    let combinadas = preguntas.map((pregunta, index) => {
+        return {
+            pregunta: pregunta,
+            respuestas: respuestas[index],
+            respuestaCorrecta: respuestasCorrectas[index]
+        };
+    });
+
+    // Algoritmo para mezclar (Fisher-Yates)
     for (let i = combinadas.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [combinadas[i], combinadas[j]] = [combinadas[j], combinadas[i]];
     }
-    combinadas.forEach((item, i) => {
-        preguntas[i] = item.pregunta;
-        respuestas[i] = item.respuestas;
+
+    // Reconstruir los arrays mezclados
+    combinadas.forEach((item, index) => {
+        preguntas[index] = item.pregunta;
+        respuestas[index] = item.respuestas;
+        respuestasCorrectas[index] = item.respuestaCorrecta;
     });
 }
+
+// Llamar a la función para mezclar al inicio
 mezclarArrays();
 
-
-let counter = 0
-function siguientePregunta(){
-
-    if(counter >= preguntas.length){
-        alert("¡Has completado el cuestionario!");
-        window.location.href = '/Cuestionariofinalizado.html'; // Redirigir a la página de resultados
-        return;
+// Función para guardar la respuesta seleccionada
+function guardarRespuesta() {
+    let respuestaSeleccionada = document.querySelector('input[name="answer"]:checked');
+    if (respuestaSeleccionada) {
+        respuestasUsuario[counter] = respuestaSeleccionada.value;
+    } else {
+        respuestasUsuario[counter] = null;
     }
-    document.querySelector("#titulo-pregunta").innerHTML = preguntas[counter];
-    let opciones = document.querySelectorAll(".option") // [...]
-    for(let i = 0; i < opciones.length; i++){
-        opciones[i].innerHTML = '<input type="radio" name="answer" value="'+ respuestas[counter][i] +'">' + respuestas[counter][i]
+}
+
+// Función para mostrar la pregunta actual
+function mostrarPregunta() {
+    document.querySelector("#titulo-pregunta").textContent = preguntas[counter];
+    
+    let opciones = document.querySelectorAll(".option");
+    for (let i = 0; i < opciones.length; i++) {
+        opciones[i].innerHTML = `
+            <input type="radio" name="answer" value="${respuestas[counter][i]}"
+                   ${respuestasUsuario[counter] === respuestas[counter][i] ? 'checked' : ''}>
+            ${respuestas[counter][i]}
+        `;
     }
-
-    counter++
-}
-document.querySelector("#siguiente").addEventListener("click", siguientePregunta)
-
-
-
-function logo(){
-    window.location.href = '/index.html'
 }
 
-document.querySelector(".Logo").addEventListener("click", logo)
-
-
-function logout(){
-    window.location.href = '/index.html'
-}
-
-document.querySelector(".Logout").addEventListener("click", logout)
-
-
-        let timeLeft = 5 * 60; // 5 minutos en segundos
-
-        function updateTimer() {
-            let minutes = Math.floor(timeLeft / 60);
-            let seconds = timeLeft % 60;
-
-            // Formato MM:SS con ceros a la izquierda
-            document.getElementById("timer").textContent =
-                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-
-            if (timeLeft > 0) {
-                timeLeft--;
-            } else {
-                clearInterval(timerInterval);
-                alert("¡Tiempo acabado!");
-                window.location.href = '/Cuestionariofinalizado.html'; // Redirigir a la página de resultados
+// Función principal para avanzar a la siguiente pregunta
+function siguientePregunta() {
+    guardarRespuesta();
+    
+    if (counter >= preguntas.length - 1) {
+        // Calcular puntaje final
+        let puntaje = 0;
+        for (let i = 0; i < respuestasUsuario.length; i++) {
+            if (respuestasUsuario[i] === respuestasCorrectas[i]) {
+                puntaje++;
             }
         }
-
-        // Actualizar cada segundo
-        let timerInterval = setInterval(updateTimer, 1000);
-
         
+        // Guardar todos los resultados en localStorage
+        localStorage.setItem("quizResults", JSON.stringify({
+            nickname: localStorage.getItem("nickname"),
+            respuestasUsuario: respuestasUsuario,
+            respuestasCorrectas: respuestasCorrectas,
+            preguntas: preguntas,
+            puntaje: puntaje,
+            porcentaje: Math.round((puntaje / preguntas.length) * 100),
+            tiempoUsado: (5 * 60) - timeLeft
+        }));
+        
+        // Redirigir a la página de resultados
+        window.location.href = 'Cuestionariofinalizado.html';
+        return;
+    }
+    
+    counter++;
+    mostrarPregunta();
+}
+
+// Función para actualizar el temporizador
+function actualizarTemporizador() {
+    let minutos = Math.floor(timeLeft / 60);
+    let segundos = timeLeft % 60;
+    
+    document.getElementById("timer").textContent = 
+        `${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
+    
+    if (timeLeft > 0) {
+        timeLeft--;
+    } else {
+        clearInterval(intervaloTemporizador);
+        alert("¡Tiempo acabado!");
+        siguientePregunta(); // Guardar resultados al finalizar el tiempo
+    }
+}
+
+// Configurar eventos
+document.querySelector("#siguiente").addEventListener("click", siguientePregunta);
+document.querySelector(".Logo").addEventListener("click", function() {
+    window.location.href = 'index.html';
+});
+document.querySelector(".Logout").addEventListener("click", function() {
+    window.location.href = 'index.html';
+});
+
+// Iniciar temporizador
+let intervaloTemporizador = setInterval(actualizarTemporizador, 1000);
+
+// Mostrar la primera pregunta al cargar
+mostrarPregunta();

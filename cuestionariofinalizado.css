@@ -1,0 +1,137 @@
+/* Estilos generales */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #212121;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.contenedor-principal {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Encabezado */
+.encabezado {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.encabezado h1 {
+    color: #DA6AFF;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.tiempo-final {
+    font-size: 1.5rem;
+    color: #7f8c8d;
+}
+
+/* Contenedor de resultados */
+.contenedor-resultados {
+    background-color: #2F2E2E;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 20px;
+}
+
+/* Estilos por pregunta */
+.pregunta-resultado {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #444;
+}
+
+.pregunta-resultado:last-child {
+    border-bottom: none;
+}
+
+.texto-pregunta {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: #DA6AFF;
+}
+
+.puntaje-pregunta {
+    display: inline-block;
+    background-color: #DA6AFF;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.opciones-resultado {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.opcion {
+    padding: 12px 15px;
+    background-color: #3a3a3a;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+/* Estados de las respuestas */
+.opcion.correcta {
+    background-color: #2ecc71;
+    color: white;
+    font-weight: bold;
+}
+
+.opcion.incorrecta-seleccionada {
+    background-color: #e74c3c;
+    color: white;
+    text-decoration: line-through;
+}
+
+.respuesta-correcta-texto {
+    margin-top: 10px;
+    color: #2ecc71;
+    font-style: italic;
+}
+
+/* Resumen final */
+.resumen-final {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.puntaje-display {
+    font-size: 3rem;
+    color: #DA6AFF;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.porcentaje-display {
+    font-size: 1.5rem;
+    color: #2ecc71;
+}
+
+/* Botones */
+.boton-ranking {
+    display: block;
+    width: 200px;
+    margin: 30px auto 0;
+    padding: 12px;
+    background-color: #DA6AFF;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.boton-ranking:hover {
+    background-color: #b300b3;
+}
