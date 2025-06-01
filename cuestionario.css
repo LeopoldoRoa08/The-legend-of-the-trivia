@@ -162,9 +162,102 @@ input[type="radio"] {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 40%;
     max-width: 798px;
-    height: 3755px;
+    height: 900px;
     margin: auto;
     padding: 30px;
     margin-bottom: 20%;
 }
 
+.pregunta{
+   background-color: #DA6AFF;
+    padding: 10px;
+    border-radius: 19px;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: left;
+    color: #fff;
+    margin-bottom: 20px
+}
+
+.correcta {
+    background-color: #4CAF50;
+    border-left-color: #4CAF50;
+}
+
+.incorrecta {
+    background-color: #f44336;
+    border-left-color: #f44336;
+}
+
+.borde-minimo{
+    position: relative;
+    bottom: -130px;
+     border: 1px solid white;
+}
+
+.resultado-final{
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    font-size: 24px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    bottom : -140px;
+}
+
+
+.porcentaje  {
+    position: relative;
+    top: -122px;
+    display: flex;
+    justify-content: right;
+}
+
+.puntaje-final {
+    
+    display: flex;
+    justify-content: left;
+}
+
+
+
+
+#ver-ranking {
+    background-color: #DA6AFF;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    position: relative;
+    right: -490px;
+    top: 50px;
+
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+#ver-ranking:hover {
+    background-color: #9700c9;
+}
+
+#menu{
+    background-color: #ddd;
+    color: #000;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    position: relative;
+    left: -20px;
+    top: 55px;
+
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#menu:hover {
+    background-color: #bbbbbb4d;
+}
