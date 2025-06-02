@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cuestionario finalizado</title>
-     <link rel="stylesheet" href="cuestionario.css">
+    <link rel="stylesheet" href="cuestionario.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <div class="contenedor_de_arriba">
         <img src="Adobe Express - file.png" alt="Logo" class="Logo">
@@ -14,28 +16,28 @@
     </div>
     <div class="encabezado">
         <h1>Cuestionario</h1>
-        <div id ="timer" class="tiempo">0:00</div>
-    </div>
-    <div class="texto-finalizado">
+        <div id="timer" class="tiempo">0:00</div>
         <h2>¡Ha finalizado!</h2>
+    </div>
 
-        </div>
     <div class="resultados">
         <div id="preguntas-container"></div>
-    <div class="borde-minimo"></div>
-    <div class="resultado-final">
-            <h2> Resultado</h2>
-            <h3 class="puntaje-final">Puntaje total</h3>
-            <p class="puntaje-final" id="puntaje-total">0/10</p>
+    </div>
+        <div class="cuadro">
+            <div class="borde-minimo"></div>
+            <div class="resultado-final">
+                <h2> Resultado</h2>
+                <h3 class="puntaje-final">Puntaje total</h3>
+                <p class="puntaje-final" id="puntaje-total">0/10</p>
                 <h3 class="porcentaje">Porcentaje de acierto</h3>
                 <p class="porcentaje" id="porcentaje-acierto">0%</p>
+                <button id="menu">Volver a inicio</button>
+                <button id="ver-ranking">Ver ranking</button>
             </div>
-    <div class="menu-opciones">
-        <button id="menu">Volver a inicio</button>
-        <button id="ver-ranking">Ver ranking</button>
-    </div>
+        </div>
+    
 
-       <script src="cuestionariofinalizado.js"></script>
-     </body>
+        <script src="cuestionariofinalizado.js"></script>
+</body>
 
 </html>

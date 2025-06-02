@@ -42,7 +42,7 @@ resultados.preguntas.forEach((pregunta, index) => {
     
     preguntaDiv.innerHTML = `
         <div>${pregunta}</div>
-        <div class="puntaje">${esCorrecta ? '+1' : '0'}</div>
+        <div class="puntaje">${esCorrecta ? '+1 pto' : '0 pts'}</div>
     `;
     
     container.appendChild(preguntaDiv);
@@ -52,6 +52,20 @@ resultados.preguntas.forEach((pregunta, index) => {
 document.getElementById('puntaje-total').textContent = `${resultados.puntaje}/${resultados.preguntas.length}`;
 document.getElementById('porcentaje-acierto').textContent = `${resultados.porcentaje}%`;
 
+
+
+
 document.querySelector('#ver-ranking').addEventListener('click', () => {
     window.location.href = '/ranking.html';
+});
+
+document.querySelector('#menu').addEventListener('click', () => {
+    window.location.href = '/index.html';
+});
+
+document.querySelector(".Logo").addEventListener("click", function() {
+    window.location.href = 'index.html';
+});
+document.querySelector(".Logout").addEventListener("click", function() {
+    window.location.href = 'index.html';
 });

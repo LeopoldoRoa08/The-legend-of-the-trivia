@@ -148,12 +148,11 @@ input[type="radio"] {
 
 }
 
-.texto-finalizado {
-    font-family: 'Roboto', sans-serif;
+.encabezado h2 {
+    margin: 0;
     color: #fff;
-    font-size: 24px;
-    text-align: center;
-    margin-top: 20px;
+    font-size: 36px;
+    margin-top: 5%;
 }
 
 .resultados {
@@ -162,14 +161,14 @@ input[type="radio"] {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 40%;
     max-width: 798px;
-    height: 900px;
     margin: auto;
     padding: 30px;
-    margin-bottom: 20%;
+    margin-top: 5%;
+    
 }
 
 .pregunta{
-   background-color: #DA6AFF;
+   background-color:#2f2e2eFF;
     padding: 10px;
     border-radius: 19px;
     font-size: 18px;
@@ -177,21 +176,37 @@ input[type="radio"] {
     text-align: left;
     color: #fff;
     margin-bottom: 20px
+    
+
 }
 
 .correcta {
     background-color: #4CAF50;
     border-left-color: #4CAF50;
+    
 }
 
 .incorrecta {
     background-color: #f44336;
     border-left-color: #f44336;
+    
+}
+
+.cuadro {
+    background-color: #2F2E2E;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 40%;
+    max-width: 798px;
+    margin: auto;
+    padding: 30px;
+    margin-bottom: 20%;
+    margin-top: 5%;
+    
 }
 
 .borde-minimo{
     position: relative;
-    bottom: -130px;
      border: 1px solid white;
 }
 
@@ -203,24 +218,27 @@ input[type="radio"] {
     margin-top: 20px;
     margin-bottom: 20px;
     position: relative;
-    bottom : -140px;
+    bottom : -20px;
 }
 
 
 .porcentaje  {
     position: relative;
-    top: -122px;
     display: flex;
-    justify-content: right;
+    justify-content: left;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction:column;
 }
 
 .puntaje-final {
-    
+    position: relative;
     display: flex;
     justify-content: left;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction:column;
 }
-
-
 
 
 #ver-ranking {
@@ -232,8 +250,8 @@ input[type="radio"] {
     font-size: 16px;
     font-weight: 600;
     position: relative;
-    right: -490px;
-    top: 50px;
+    justify-content: right;
+    top: 20px;
 
     cursor: pointer;
     transition: background-color 0.3s;
@@ -251,8 +269,8 @@ input[type="radio"] {
     font-size: 16px;
     font-weight: 600;
     position: relative;
-    left: -20px;
-    top: 55px;
+    justify-content: left;
+    top: 20px;
 
     cursor: pointer;
     transition: background-color 0.3s;
@@ -260,4 +278,50 @@ input[type="radio"] {
 
 #menu:hover {
     background-color: #bbbbbb4d;
+}
+
+.caja{
+   background-color: #212121;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 70%;
+    max-width: 798px;
+    height: 40%;
+    margin: auto;
+    padding: 30px;
+
+}
+.rectangulo{
+    background-color: #8d8d8d;
+
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    max-width: 798px;
+    height: 20%;
+    margin: auto;
+    padding: 24px;
+    margin-bottom: 0.1%;
+    margin-top: 1%;
+    
+}
+
+#volver-jugar{
+    background-color: #DA6AFF;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    position: relative;
+    justify-content: right;
+    top: 20px;
+    margin-bottom: 5%;
+
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#volver-jugar:hover {
+    background-color: #9700c9;
 }
