@@ -312,7 +312,7 @@ input[type="radio"] {
 .rectangulo .posicion {
     font-weight: bold;
     color: #DA6AFF;
-    font-size: 1.1em;
+    font-size: 2em;
 }
 
 .rectangulo .nickname {
@@ -320,11 +320,13 @@ input[type="radio"] {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-size: 1.5em;
 }
 
 .rectangulo .puntaje {
     text-align: right;
-    padding-right: 10px;
+    padding-right: 20px;
+    font-size: 1.4em;
 }
 
 .rectangulo .tiempo {
