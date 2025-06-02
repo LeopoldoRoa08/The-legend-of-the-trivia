@@ -97,7 +97,7 @@ function mostrarPregunta() {
 // Función principal para avanzar a la siguiente pregunta
 function siguientePregunta() {
     guardarRespuesta();
-    
+
     if (counter >= preguntas.length - 1) {
         // Calcular puntaje final
         let puntaje = 0;
@@ -106,7 +106,10 @@ function siguientePregunta() {
                 puntaje++;
             }
         }
-        
+
+        // Calcular tiempo usado
+        const tiempoUsado = (5 * 60) - timeLeft;
+
         // Guardar todos los resultados en localStorage
         localStorage.setItem("quizResults", JSON.stringify({
             nickname: localStorage.getItem("nickname"),
@@ -115,14 +118,24 @@ function siguientePregunta() {
             preguntas: preguntas,
             puntaje: puntaje,
             porcentaje: Math.round((puntaje / preguntas.length) * 100),
-            tiempoUsado: (5 * 60) - timeLeft
+            tiempoUsado: tiempoUsado
         }));
-        
+
+        // Actualizar el ranking
+        const ranking = JSON.parse(localStorage.getItem("ranking")) || [];
+        ranking.push({
+            nickname: localStorage.getItem("nickname"),
+            puntaje: puntaje,
+            tiempoUsado: tiempoUsado,
+            fecha: new Date().toISOString()
+        });
+        localStorage.setItem("ranking", JSON.stringify(ranking));
+
         // Redirigir a la página de resultados
         window.location.href = 'Cuestionariofinalizado.html';
         return;
     }
-    
+
     counter++;
     mostrarPregunta();
 }
@@ -140,7 +153,7 @@ function actualizarTemporizador() {
     } else {
         clearInterval(intervaloTemporizador);
         alert("¡Tiempo acabado!");
-        siguientePregunta(); // Guardar resultados al finalizar el tiempo
+        window.location.href = 'Cuestionariofinalizado.html'; // Guardar resultados al finalizar el tiempo
     }
 }
 
@@ -158,3 +171,4 @@ let intervaloTemporizador = setInterval(actualizarTemporizador, 1000);
 
 // Mostrar la primera pregunta al cargar
 mostrarPregunta();
+

@@ -305,6 +305,43 @@ input[type="radio"] {
     
 }
 
+.rectangulo.lleno {
+    border-left: 4px solid #DA6AFF;
+}
+
+.rectangulo .posicion {
+    font-weight: bold;
+    color: #DA6AFF;
+    font-size: 1.1em;
+}
+
+.rectangulo .nickname {
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.rectangulo .puntaje {
+    text-align: right;
+    padding-right: 10px;
+}
+
+.rectangulo .tiempo {
+    font-family: monospace;
+    text-align: center;
+    background: #1a1a1a;
+    padding: 3px 5px;
+    border-radius: 4px;
+}
+
+.rectangulo .vacio {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #888;
+    font-style: italic;
+}
+
 #volver-jugar{
     background-color: #DA6AFF;
     color: white;
