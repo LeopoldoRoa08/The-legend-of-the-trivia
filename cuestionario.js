@@ -152,8 +152,47 @@ function actualizarTemporizador() {
         timeLeft--;
     } else {
         clearInterval(intervaloTemporizador);
-        alert("¡Tiempo acabado!");
-        window.location.href = 'Cuestionariofinalizado.html'; // Guardar resultados al finalizar el tiempo
+        
+        // Guardar la respuesta actual si hay alguna seleccionada
+        guardarRespuesta();
+        
+        // Marcar las preguntas no contestadas como null
+        for (let i = counter; i < preguntas.length; i++) {
+            if (respuestasUsuario[i] === undefined) {
+                respuestasUsuario[i] = null;
+            }
+        }
+        
+        // Calcular puntaje (esto ya existe, no lo modifiques)
+        let puntaje = 0;
+        for (let i = 0; i < respuestasUsuario.length; i++) {
+            if (respuestasUsuario[i] === respuestasCorrectas[i]) {
+                puntaje++;
+            }
+        }
+
+        // El resto de la lógica para guardar y redirigir (esto ya existe)
+        const tiempoUsado = (5 * 60) - timeLeft;
+        localStorage.setItem("quizResults", JSON.stringify({
+            nickname: localStorage.getItem("nickname"),
+            respuestasUsuario: respuestasUsuario,
+            respuestasCorrectas: respuestasCorrectas,
+            preguntas: preguntas,
+            puntaje: puntaje,
+            porcentaje: Math.round((puntaje / preguntas.length) * 100),
+            tiempoUsado: tiempoUsado
+        }));
+
+        const ranking = JSON.parse(localStorage.getItem("ranking")) || [];
+        ranking.push({
+            nickname: localStorage.getItem("nickname"),
+            puntaje: puntaje,
+            tiempoUsado: tiempoUsado,
+            fecha: new Date().toISOString()
+        });
+        localStorage.setItem("ranking", JSON.stringify(ranking));
+
+        window.location.href = 'Cuestionariofinalizado.html';
     }
 }
 

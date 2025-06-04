@@ -36,21 +36,22 @@ resultados.preguntas.forEach((pregunta, index) => {
     const respuestaUsuario = resultados.respuestasUsuario[index];
     const respuestaCorrecta = resultados.respuestasCorrectas[index];
     const esCorrecta = respuestaUsuario === respuestaCorrecta;
+    const noContestada = respuestaUsuario === null || respuestaUsuario === undefined;
     
     const preguntaDiv = document.createElement('div');
     preguntaDiv.className = `pregunta ${esCorrecta ? 'correcta' : 'incorrecta'}`;
     
     preguntaDiv.innerHTML = `
         <div>${pregunta}</div>
+        <div class="respuesta-usuario">
+            ${noContestada ? "<span style='color:red'>No contestada</span>" : `Tu respuesta: ${respuestaUsuario}`}
+        </div>
+        ${!esCorrecta && !noContestada ? `<div class="respuesta-correcta">Respuesta correcta: ${respuestaCorrecta}</div>` : ''}
         <div class="puntaje">${esCorrecta ? '+1 pto' : '0 pts'}</div>
     `;
     
     container.appendChild(preguntaDiv);
 });
-
-// Actualizar puntaje final
-document.getElementById('puntaje-total').textContent = `${resultados.puntaje}/${resultados.preguntas.length}`;
-document.getElementById('porcentaje-acierto').textContent = `${resultados.porcentaje}%`;
 
 
 
