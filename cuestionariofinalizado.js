@@ -60,7 +60,7 @@ document.querySelector('#ver-ranking').addEventListener('click', () => {
 });
 
 document.querySelector('#menu').addEventListener('click', () => {
-    window.location.href = '/index.html';
+    window.location.href = 'index.html';
 });
 
 document.querySelector(".Logo").addEventListener("click", function() {
