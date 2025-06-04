@@ -32,6 +32,7 @@ const resultados = JSON.parse(localStorage.getItem("quizResults")) || {
 // Mostrar todas las preguntas con su estado
 const container = document.getElementById('preguntas-container');
 
+
 resultados.preguntas.forEach((pregunta, index) => {
     const respuestaUsuario = resultados.respuestasUsuario[index];
     const respuestaCorrecta = resultados.respuestasCorrectas[index];
@@ -52,6 +53,9 @@ resultados.preguntas.forEach((pregunta, index) => {
     
     container.appendChild(preguntaDiv);
 });
+//Actualizar puntaje final
+document.getElementById('puntaje-total').textContent = `${resultados.puntaje}/${resultados.preguntas.length}`;
+document.getElementById('porcentaje-acierto').textContent = `${resultados.porcentaje}%`;
 
 
 
