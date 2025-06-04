@@ -132,7 +132,7 @@ function siguientePregunta() {
         localStorage.setItem("ranking", JSON.stringify(ranking));
 
         // Redirigir a la página de resultados
-        window.location.href = 'cuestionariofinalizado.html';
+        window.location.href = 'Cuestionariofinalizado.html';
         return;
     }
 
