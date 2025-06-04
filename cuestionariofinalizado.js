@@ -56,7 +56,7 @@ document.getElementById('porcentaje-acierto').textContent = `${resultados.porcen
 
 
 document.querySelector('#ver-ranking').addEventListener('click', () => {
-    window.location.href = 'Ranking.html';
+    window.location.href = 'ranking.html';
 });
 
 document.querySelector('#menu').addEventListener('click', () => {
