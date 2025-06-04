@@ -121,15 +121,34 @@ function siguientePregunta() {
             tiempoUsado: tiempoUsado
         }));
 
-        // Actualizar el ranking
-        const ranking = JSON.parse(localStorage.getItem("ranking")) || [];
-        ranking.push({
+       // Actualizar el ranking (versión mejorada sin duplicados)
+const ranking = JSON.parse(localStorage.getItem("ranking")) || [];
+
+// Buscar si el usuario ya existe en el ranking
+const usuarioExistenteIndex = ranking.findIndex(item => item.nickname === localStorage.getItem("nickname"));
+
+if (usuarioExistenteIndex !== -1) {
+    // Si existe, actualiza solo si el nuevo puntaje es MEJOR
+    if (puntaje > ranking[usuarioExistenteIndex].puntaje) {
+        ranking[usuarioExistenteIndex] = {
             nickname: localStorage.getItem("nickname"),
             puntaje: puntaje,
             tiempoUsado: tiempoUsado,
             fecha: new Date().toISOString()
-        });
-        localStorage.setItem("ranking", JSON.stringify(ranking));
+        };
+    }
+} else {
+    // Si no existe, agregar nuevo registro
+    ranking.push({
+        nickname: localStorage.getItem("nickname"),
+        puntaje: puntaje,
+        tiempoUsado: tiempoUsado,
+        fecha: new Date().toISOString()
+    });
+}
+
+// Ordenar por puntaje (descendente) y tiempo (ascendente)
+localStorage.setItem("ranking", JSON.stringify(ranking));
 
         // Redirigir a la página de resultados
         window.location.href = 'Cuestionariofinalizado.html';
@@ -183,14 +202,38 @@ function actualizarTemporizador() {
             tiempoUsado: tiempoUsado
         }));
 
-        const ranking = JSON.parse(localStorage.getItem("ranking")) || [];
-        ranking.push({
+       // Actualizar el ranking (versión mejorada sin duplicados)
+const ranking = JSON.parse(localStorage.getItem("ranking")) || [];
+
+// Buscar si el usuario ya existe en el ranking
+const usuarioExistenteIndex = ranking.findIndex(item => item.nickname === localStorage.getItem("nickname"));
+
+if (usuarioExistenteIndex !== -1) {
+    // Si existe, actualiza solo si el nuevo puntaje es MEJOR
+    if (puntaje > ranking[usuarioExistenteIndex].puntaje) {
+        ranking[usuarioExistenteIndex] = {
             nickname: localStorage.getItem("nickname"),
             puntaje: puntaje,
             tiempoUsado: tiempoUsado,
             fecha: new Date().toISOString()
-        });
-        localStorage.setItem("ranking", JSON.stringify(ranking));
+        };
+    }
+    // Opcional: También puedes comparar por tiempo si el puntaje es igual
+    // else if (puntaje === ranking[usuarioExistenteIndex].puntaje && tiempoUsado < ranking[usuarioExistenteIndex].tiempoUsado) {
+    //     ranking[usuarioExistenteIndex].tiempoUsado = tiempoUsado;
+    // }
+} else {
+    // Si no existe, agregar nuevo registro
+    ranking.push({
+        nickname: localStorage.getItem("nickname"),
+        puntaje: puntaje,
+        tiempoUsado: tiempoUsado,
+        fecha: new Date().toISOString()
+    });
+}
+
+
+localStorage.setItem("ranking", JSON.stringify(ranking));
 
         window.location.href = 'Cuestionariofinalizado.html';
     }
