@@ -53,7 +53,7 @@ function mezclarArrays() {
         };
     });
 
-    // Algoritmo para mezclar (Fisher-Yates)
+    // Algoritmo para mezclar 
     for (let i = combinadas.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [combinadas[i], combinadas[j]] = [combinadas[j], combinadas[i]];
@@ -121,7 +121,7 @@ function siguientePregunta() {
             tiempoUsado: tiempoUsado
         }));
 
-       // Actualizar el ranking (versión mejorada sin duplicados)
+       // Actualizar el ranking 
 const ranking = JSON.parse(localStorage.getItem("ranking")) || [];
 
 // Buscar si el usuario ya existe en el ranking
@@ -182,7 +182,7 @@ function actualizarTemporizador() {
             }
         }
         
-        // Calcular puntaje (esto ya existe, no lo modifiques)
+        // Calcular puntaje 
         let puntaje = 0;
         for (let i = 0; i < respuestasUsuario.length; i++) {
             if (respuestasUsuario[i] === respuestasCorrectas[i]) {
@@ -202,7 +202,7 @@ function actualizarTemporizador() {
             tiempoUsado: tiempoUsado
         }));
 
-       // Actualizar el ranking (versión mejorada sin duplicados)
+       // Actualizar el ranking 
 const ranking = JSON.parse(localStorage.getItem("ranking")) || [];
 
 // Buscar si el usuario ya existe en el ranking
@@ -218,10 +218,7 @@ if (usuarioExistenteIndex !== -1) {
             fecha: new Date().toISOString()
         };
     }
-    // Opcional: También puedes comparar por tiempo si el puntaje es igual
-    // else if (puntaje === ranking[usuarioExistenteIndex].puntaje && tiempoUsado < ranking[usuarioExistenteIndex].tiempoUsado) {
-    //     ranking[usuarioExistenteIndex].tiempoUsado = tiempoUsado;
-    // }
+ 
 } else {
     // Si no existe, agregar nuevo registro
     ranking.push({
